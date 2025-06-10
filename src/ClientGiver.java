@@ -20,9 +20,10 @@ public class ClientGiver {
                         try {
                             switch (d.in.readObject()) {
                                 case ListPlease listPlease -> d.out.writeObject(new ListGiven(connections));
-                                default -> System.out.println("unknown object");
+                                default -> System.out.println("read unknown object");
                             }
                         } catch (Exception e) {
+                            e.printStackTrace();
                             System.out.println("uh oh");
                         }
                     }
@@ -30,6 +31,7 @@ public class ClientGiver {
             }
         } catch (IOException e) {
             System.out.println("eye oh!");
+            e.printStackTrace();
         }
     }
 }

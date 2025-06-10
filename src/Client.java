@@ -23,7 +23,8 @@ public class Client {
                     try {
                         connection.out.writeObject(new Hello("HI THERE"));
                     } catch (IOException e) {
-                        System.out.println("eye oh no");
+                        System.out.println("eye oh no (in timer)");
+                        e.printStackTrace();
                     }
                 }
             }, 10, 100);
@@ -45,6 +46,7 @@ class Listener implements Runnable {
                 System.out.println(connection.in.readObject().toString());
             } catch (Exception e) {
                 System.out.println("uhh oh got exception reading message");
+                e.printStackTrace();
             }
         }
     }
